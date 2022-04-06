@@ -1,0 +1,98 @@
+@import "../assets/styles/colors.scss";
+div{
+    
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+
+}
+li {
+    margin-right: 25vw ;
+    margin-top: 10vh !important;
+}
+
+li b{
+    display: flex;
+    align-items: center;
+}
+li:nth-child(odd) { 
+    margin-right: 0 ;
+    margin-left: 25vw ;
+}
+
+.homeContainer{
+    background: linear-gradient($dark, $blue,$main,$light-blue,$light-blue2),url("../assets/images/stars.png"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode:hard-light;
+    width: auto;
+    min-height: 500vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+
+    .firstSection{
+      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+    }
+    .secondSection{
+        top: 150vh;
+        position: absolute;
+        li{
+
+            font-size: 2vw;
+           
+        }
+    }
+    .thirdSection{
+        top: 250vh;
+        position: absolute;
+        
+        .about{
+            width: min-content;
+            min-width: 50vw;
+            max-width: 70vw;
+            @media (max-width:1000px) {
+                font-size: 2vw;
+            }
+            margin: auto;
+            margin-right: 15vw;
+            &:nth-child(odd) { 
+                margin-right: 0 ;
+                margin-left: 15vw ;
+            }
+            background: rgba($color: $dark, $alpha: 0.5);
+            height: 10vh;
+            border: solid $light-blue;
+            padding: 5px;
+            b{
+                color:#61dafb;
+            }
+            border-width: 0.3vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                display: block;
+                width: 20%;
+                height: auto;
+                max-height:'auto';
+                position: relative;
+            }
+        }
+    }
+    .fourthSection{
+        top: 400vh;
+        position: absolute;
+    }
+}
