@@ -7,17 +7,17 @@ import style from "./IconAnimation.module.scss"
 function IconAnimation() {
     const iconArray = [<IoCodeSlash/>,<BsKeyboardFill/>, <BsPhone/>,<BsServer/>, <BsEyedropper/>,<MdComputer/>]
     const [renderedIcon,setRenderedIcon]=useState(<span><IoCodeSlash/></span>);
-    const [randomX,setRandomX]=useState(Math.random()*(100 - 50) + 50);
-    const [randomY,setRandomY]=useState(Math.random()*(100 - 50) + 50);
-
+    const [randomX,setRandomX]=useState(Math.random()*(4-2)+2);
+   
+  
     const randomPosition = () => {
-      return (Math.random(1000)*(100))
+      return (Math.random()*(100+50)-50)
     }
 
     const renderIcon = () => { 
         const random =Math.floor(Math.random() * iconArray.length);
         const icon =<motion.div className={style.icon}  
-        animate={{y:[`${randomPosition()}%`,`${randomPosition()}%`],x:[`${randomPosition()}%`,`${randomPosition()}%`],opacity:[0,1,0]}} transition={{ repeat:Infinity,duration: 3 }} > 
+         > 
         {iconArray[random]} 
          </motion.div>;
 
@@ -26,19 +26,25 @@ function IconAnimation() {
     useEffect(() => {
         const interval = setInterval(() => {
           setRenderedIcon(renderIcon)
-        }, 3000);
+          setRandomX(Math.random()*(4-2)+2)
+        },randomX*1000 );
           return () => clearInterval(interval);
     }, [])
 
   return (
     <div className={style.Container}>
      
-     <motion.div  > 
-          {renderIcon()}
-      </motion.div>
-        
-     
-  
+    {[...Array(10)].map((_,i)=>{
+     return (
+      <motion.div key={i} className={style.iconDiv} 
+      initial={{y:`${randomPosition()}%`,x:`${randomPosition()}%`,opacity:0}}
+      animate={{y:[`${randomPosition()}%`,`${randomPosition()}%`],x:[`${randomPosition()}%`,`${randomPosition()}%`],
+      opacity:[0,1,0]}} 
+      transition={{ease:"easeIn" ,repeatType:"mirror",repeat:Infinity,duration: randomX}} > 
+            {renderIcon()}
+        </motion.div>
+      )
+    })}
     </div>
   )
 }

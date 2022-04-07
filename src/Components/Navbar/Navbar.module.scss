@@ -1,0 +1,38 @@
+@import "../../assets/styles/colors.scss";
+.Container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1vh;
+    font-size: 2vw;
+    z-index: 3;
+    left: 95%;
+    width: 5vw;
+    a{
+        transition: 0.4s ease-in-out;
+        color: #61dafb;
+        text-decoration: none;
+        &:hover{
+            font-size: calc(2vw + 2vw);
+            filter:brightness(2)
+        }
+    }
+    @media (orientation:portrait){
+        flex-direction: row;
+        top: 0;
+        left:auto !important;
+        width:100% !important;
+        min-height: 0;
+        max-height: 5vh !important;
+        a{
+            font-size: 3vh;
+            &:hover{
+
+                font-size: calc(2vh + 2vh);
+                filter:brightness(2)
+            }
+        }
+    }
+}

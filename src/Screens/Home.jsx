@@ -1,48 +1,79 @@
-import {React,useEffect} from 'react'
+import {React,useEffect,useState} from 'react'
 import style from "./Home.module.scss"
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { motion } from "framer-motion"
-import { AiFillGithub,AiFillLinkedin,AiFillMail } from "react-icons/ai";
+
 import {SiJavascript ,SiReact,SiRedux ,SiHtml5,SiMaterialui} from "react-icons/si";
-import {IoLogoSass } from "react-icons/io";
-
-import { Link, Element,animateScroll as scroll } from "react-scroll";
-
+import {IoLogoSass, IoIosArrowUp} from "react-icons/io";
+import { FiArrowUp } from "react-icons/fi";
+import { BsDot } from "react-icons/bs";
+import Navbar from '../Components/Navbar/Navbar'
+import Backdrop from '../Components/Backdrop/Backdrop'
+import { Link,animateScroll as scroll } from "react-scroll";
+import Scrollspy from 'react-scrollspy'
 import IconAnimation from '../Components/IconAnimation'
 function Home() {
-
+    const [openBackdrop,setOpenBackdrop]=useState(false)
     useEffect(() => {
       Aos.init()
     }, [])
-    const variants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }
+
+    const handleClose = () => {
+        console.log('hehe')
+        setOpenBackdrop(!openBackdrop)
+        
+    }
 
   return (
-    <div className={style.homeContainer} id="firstSection">
-      <IconAnimation/>
-        <div className={style.firstSection} >
-      
+    <div className={style.homeContainer} >
+    <button onClick={()=>scroll.scrollToTop()}> <FiArrowUp style={{width:"min-content"}}/></button>
+   
+    <Scrollspy className={style.scrollSpy} currentClassName={style.X}items={ ['firstSection', 'secondSection', 'thirdSection','fourthSection'] } >
+        <li>  <Link 
+                to="firstSection"
+                smooth={true}>
+                    <BsDot/>
+                </Link>
+        </li>
+        <li>  <Link 
+                to="secondSection"
+                smooth={true}>
+                    <BsDot/>
+                </Link>
+        </li>
+        <li>  <Link 
+                to="thirdSection"
+                smooth={true}>
+                    <BsDot/>
+                </Link>
+        </li>
+        <li>  <Link 
+                to="fourthSection"
+                smooth={true}>
+                    <BsDot/>
+                </Link>
+        </li>
+    </Scrollspy>
+       {/* <IconAnimation/>  */}
+        <div className={style.firstSection}  id="firstSection">
+        <Backdrop open={openBackdrop} handleClose={handleClose} />
             <Link 
-                activeClass="active" 
-                to="secondSection" 
-                spy={true} 
-                smooth={true} 
+                activeClass="active"
+                to="secondSection"
+                smooth={true}
                 duration={500}>
-              
-                <motion.h1  whileInView={{ scale: [1,1.2] }} animate={{y:[0,-50,0]}} transition={{ duration: 2 }} >Hi i am Boris</motion.h1>
+                <motion.h1  whileInView={{ scale: [1,1.2] }} animate={{y:[0,-50,0]}} transition={{ duration: 2 }} >Hi i am <b>Boris</b></motion.h1>
                 <motion.h3 
-                    initial="hidden"
-                    animate="visible"
-                    variants={variants}
+                    animate={{opacity:[0,1]}}
                     transition={{ duration: 4 }}
                 >A front-end developer</motion.h3>
             </Link>
+            <Navbar/>
         </div>
-        <div  className={style.secondSection} id="secondSection">
+        <div  className={style.secondSection}   >
             <Link 
+                id="secondSection"
                 activeClass="active" 
                 to="thirdSection" 
                 spy={true} 
@@ -53,31 +84,32 @@ function Home() {
             <li 
                 data-aos="fade-right"
                 data-aos-easing="ease-in-sine">
-                    <SiReact/> ReactJS
+                    <SiReact style={{color:"#61dafb"}}/> ReactJS
             </li>
             <li data-aos="fade-left"
                 data-aos-easing="ease-in-sine">
-                    <SiJavascript/> JavaScript
+                    <SiJavascript style={{color:"#F0DB4F"}}/> JavaScript
             </li>
             <li data-aos="fade-right"
                 data-aos-easing="ease-in-sine">
-                    <SiHtml5/> HTML5
+                    <SiHtml5 style={{color:"#e34c26"}}/> HTML5
             </li>
             <li data-aos="fade-left"
                 data-aos-easing="ease-in-sine">
-                    <IoLogoSass/> SASS
+                    <IoLogoSass style={{color:"#cd669a"}}/> SASS
             </li>
             <li data-aos="fade-right"
                 data-aos-easing="ease-in-sine">
-                    <SiRedux/> Redux
+                    <SiRedux style={{color:"#764abc"}}/> Redux
             </li>
             <li data-aos="fade-left"
                 data-aos-easing="ease-in-sine">
-                    <SiMaterialui/> Material UI
+                    <SiMaterialui style={{color:"#007fff"}}/> Material UI
             </li>
         </div>
-        <div className={style.thirdSection} id="thirdSection">
+        <div className={style.thirdSection}>
             <Link 
+                id="thirdSection"
                 activeClass="active" 
                 to="fourthSection" 
                 spy={true} 
@@ -108,30 +140,41 @@ function Home() {
                 data-aos-easing="ease-out-cubic"
                 data-aos-duration="1000" 
             className={style.about}>
-                I love learning about new technologies and practices
+                I started with &nbsp; <b style={{color:style.blue}}>ReactJS  &nbsp; <SiReact/> </b>  &nbsp; about a year ago
             </li>
 
             <li
-                
+                data-aos="fade-right"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000" 
+            className={style.about}>
+                I love learning and studying about new technologies
+            </li>
+
+            <li
                 data-aos="fade-left"
                 data-aos-easing="ease-out-cubic"
                 data-aos-duration="1000" 
             className={style.about}>
-                I started with &nbsp; <b style={{color:style.blue}}>ReactJS  &nbsp; <SiReact/> </b>  &nbsp; about a year ago
+                If you want to get more personal  &nbsp;<b style={{cursor:"pointer",color:style.blue}} onClick={()=> setOpenBackdrop(true)}>Click me</b>  
             </li>
 
-
         </div>
-        <div className={style.fourthSection} id="fourthSection">
-           
+        <div className={style.fourthSection} >
                 <Link 
+                    id="fourthSection"
                     activeClass="active" 
                     to="firstSection" 
                     spy={true} 
                     smooth={true} 
                 duration={500}>
-                <h1>4</h1>
+                <motion.h1 whileInView={{opacity:[0,1]}} transition={{ duration: 2 }}>My work</motion.h1>
                 </Link>
+                <ul>
+                <li >
+                <h3> <i>Gyme</i></h3> - Gym eCommerce website
+                </li>
+            </ul>
         </div>
     </div>
   )

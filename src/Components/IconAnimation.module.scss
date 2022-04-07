@@ -6,7 +6,7 @@ $randomY:random(100);
    width: 100%;
    top:0;
     height: 100%;
-    filter: opacity(50%);
+    filter: opacity(30%);
 
     li{
         list-style: none;
@@ -16,9 +16,8 @@ $randomY:random(100);
         animation-duration: 4s;
         animation-iteration-count: infinite;
     }
-    .icon{
-        width:min-content;
-        height: min-content;
+    .iconDiv{
+        position: absolute;
     }
     
 }

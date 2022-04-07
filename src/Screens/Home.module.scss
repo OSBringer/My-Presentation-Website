@@ -1,15 +1,16 @@
 @import "../assets/styles/colors.scss";
 div{
-    
     overflow: hidden;
     width: 100%;
     text-align: center;
     height: 100%;
+    min-height: 100vh;
 
 }
 li {
     margin-right: 25vw ;
     margin-top: 10vh !important;
+    list-style:none ;
 }
 
 li b{
@@ -27,7 +28,8 @@ li:nth-child(odd) {
     background-repeat: no-repeat;
     background-blend-mode:hard-light;
     width: auto;
-    min-height: 500vh;
+    min-height: 600vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +38,6 @@ li:nth-child(odd) {
     color: white;
 
     .firstSection{
-      
         display: flex;
         justify-content: center;
         align-items: center;
@@ -44,20 +45,20 @@ li:nth-child(odd) {
         width: 100%;
         position: absolute;
         z-index: 2;
+        b{
+            color: #61dafb;
+        }
     }
     .secondSection{
-        top: 150vh;
-        position: absolute;
         li{
-
+            height: min-content;
             font-size: 2vw;
-           
+            @media (orientation:portrait){
+                font-size: 3vh;
+            }
         }
     }
     .thirdSection{
-        top: 250vh;
-        position: absolute;
-        
         .about{
             width: min-content;
             min-width: 50vw;
@@ -73,11 +74,12 @@ li:nth-child(odd) {
             }
             background: rgba($color: $dark, $alpha: 0.5);
             height: 10vh;
-            border: solid $light-blue;
             padding: 5px;
             b{
                 color:#61dafb;
             }
+            border: solid $light-blue;
+            border-radius: 1vh;
             border-width: 0.3vw;
             display: flex;
             justify-content: center;
@@ -89,10 +91,84 @@ li:nth-child(odd) {
                 max-height:'auto';
                 position: relative;
             }
+            @media (orientation:portrait){
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size:1.5vh;
+            }
         }
     }
     .fourthSection{
-        top: 400vh;
-        position: absolute;
+        ul{
+            display: flex;
+            justify-content: center;
+            h3{
+                text-decoration: underline;
+                color: #B79BC0;
+            }
+
+            align-items: start;
+            flex-direction: row;
+            li{
+            background: rgba($color: $dark, $alpha: 0.5);
+            border: solid $light-blue;
+            border-radius: 1vh;
+            border-width: 0.3vw;
+            max-width: 80vw;
+            margin: 0 ;
+            width: 100%;
+            text-align: center;
+           }
+        }
+    }
+}
+button{
+    position:fixed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    svg{
+        font-size: 2vw;
+    }
+    margin: auto;
+    border: 0;
+    top: 90%;
+    right: 95%;
+    width: 3.5vw;
+    padding: 0;
+    height: 3.5vw;
+    @media (min-width:200px) {
+        font-size: 1vw;
+    }
+    @media (orientation:portrait) {
+        right: 90%;
+        width: 5vh;
+        height: 5vh;
+    }
+    z-index: 3;
+}
+.scrollSpy{
+    .X{
+        color:#26408B;
+    }
+    width: 3.5vw;
+    z-index: 3;
+    margin: 0 ;
+    top: calc(50% );
+    transform: translateY(-50%);
+    right:  95%;
+    position:fixed;
+    padding: 0 !important;
+    font-size: 4vh;
+    height:20vh;
+    li{
+        transition: 0.5s ease-in-out;
+        margin: 0 !important;
+        &:hover{
+            font-size: calc(4vh + 1vh);
+            color: #61dafb;
+        }
     }
 }
