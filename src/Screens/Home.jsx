@@ -1,8 +1,10 @@
 import {React,useEffect,useState} from 'react'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import style from "./Home.module.scss"
 import Aos from "aos"
 import "aos/dist/aos.css"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import {Carousel} from "react-responsive-carousel";
 
 import {SiJavascript ,SiReact,SiRedux ,SiHtml5,SiMaterialui} from "react-icons/si";
 import {IoLogoSass, IoIosArrowUp} from "react-icons/io";
@@ -170,9 +172,34 @@ function Home() {
                 duration={500}>
                 <motion.h1 whileInView={{opacity:[0,1]}} transition={{ duration: 2 }}>My work</motion.h1>
                 </Link>
-                <ul>
-                <li >
+                <ul className={style.wrapper}>
+                <li className={style.page} >
                 <h3> <i>Gyme</i></h3> - Gym eCommerce website
+                <span style={{width:"80vw",minHeight:0,margin:"0 auto"}}>
+                <Carousel  showStatus={false} infiniteLoop={true} className={style.Carousel}>
+                    <div className={style.carouselImage} >
+                        <img  src={require("../assets/images/gyme0.png")} />
+                        <p className="legend">Legend 1</p>
+                    </div>
+                    <div className={style.carouselImage} >
+                        <img src={require("../assets/images/gyme1.png")}/>
+                        <p className="legend">Legend 2</p>
+                    </div>
+                    <div className={style.carouselImage} >
+                        <img src={require("../assets/images/gyme2.png")} />
+                        <p className="legend">Legend 3</p>
+                    </div>
+                    <div className={style.carouselImage} >
+                        <img src={require("../assets/images/gyme3.png")} />
+                        <p className="legend">Legend 3</p>
+                    </div>
+                    <div className={style.carouselImage} >
+                        <img   src={require("../assets/images/gyme5.png")} />
+                        <p className="legend">Legend 3</p>
+                    </div>
+                    
+                </Carousel>
+            </span>  
                 </li>
             </ul>
         </div>

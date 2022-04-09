@@ -100,7 +100,7 @@ li:nth-child(odd) {
         }
     }
     .fourthSection{
-        ul{
+        .wrapper{
             display: flex;
             justify-content: center;
             h3{
@@ -110,7 +110,7 @@ li:nth-child(odd) {
 
             align-items: start;
             flex-direction: row;
-            li{
+            .page{
             background: rgba($color: $dark, $alpha: 0.5);
             border: solid $light-blue;
             border-radius: 1vh;
@@ -170,5 +170,32 @@ button{
             font-size: calc(4vh + 1vh);
             color: #61dafb;
         }
+    }
+}
+
+
+.Carousel {
+    width: 80vw;
+    height: fit-content;
+    .carouselImage{
+        margin: auto;
+    
+      
+    }
+    p{
+        margin: auto;
+        width: inherit;
+    }
+    ul{
+        padding-inline-start:0;
+    }
+    li {
+        margin-right: 0 ;
+        margin-left: 0;
+        padding: 0  !important;
+        padding-left: right !important;
+    }
+    *{
+        min-height:  0 !important;
     }
 }
